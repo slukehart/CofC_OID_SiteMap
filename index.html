@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width" initial-scale=1 />
+        <meta name="description" content="This website will display the location of departments contributing to institutional diversity methods on College of Charlestons campus">
+        <meta name="keywords" content="HTML, CSS, JavaScript, Google Maps API, College of Charleston">
+        <meta name="author" content="Spencer Lukehart">
+         <title>Institutional Diversity Map</title>
+         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+         <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+         <link rel="stylesheet" href="style.css">
+
+    </head>
+    <body>
+        <header>
+          <span>          
+            <img src="assets/information_icon.png" height="25px" width="25px" style="margin-right: 10px;">
+            hello
+          </span>
+          </header>
+        <div class="container text-center" style="margin: none;">
+                <div class="row">
+                  <div id="departmentContainers" class="container">
+                    <div class="col" >
+                        
+                        <nav>
+                            <ul>
+                                <a href="studentAffairs.html"><li id = "list1">Student Affairs</li></a>
+                                
+                                
+                                
+                                
+                                <a href="athletic.html"> <li id = "list3" >Athletic Department</li></a>
+                                
+                                
+                                <a href="honors.html"> <li id = "list4" >Honors College</li></a>
+                                
+                                
+                                <a href="gradSchool.html"> <li id = "list5" >Graduate School</li></a>
+                                
+                                
+                                <a href = "library.html"><li id = "list6" >Library</li></a>
+                                
+                                
+                                <a href = "comm.html"><li id = "list7"  >University Communications</li></a>
+                                
+                          
+                                <a href="arts.html"> <li id = "list8" >School of The Arts</li></a>
+                                
+                                <a href = "edu.html"><li id = "list9" >School of Education</li></a>
+                                
+                                
+                                <a href="scienceAndMath.html"> <li id = "list10" >School of Math and Sciences</li></a>
+                                
+                                <a href = "humananities.html"><li id = "list11" >School of Humanities and Social Sciences</li></a>
+                                
+                                <a href = "institutional.html"><li id = "list12" >Institutional Advancement</li></a>
+                                
+                                
+                                
+                                <a href = "facilities.html"><li id = "list13" >Facilities Management</li></a>
+                                <a href="business.html"> <li id = "list2" > School of Business and School of Languages, Cultures, and World Affairs</li></a>
+                               </ul>
+                               </nav>
+
+                        
+                    </div>
+                    </div>
+                    <div class="col" style="margin-right: 30px;">
+                        <h3>College of Charleton's Campus</h3>
+                        <div id="map" class="map" >
+
+
+                        </div>
+
+                            
+                    </div>
+
+                </div>
+        
+        
+       
+            </div>
+    <footer></footer>
+        <script>
+           
+                function initMap(){
+                    
+                    //map json parameter options that center CofC's cistern
+                    let options = {
+                        zoom: 13.75,
+                        center: {lat: 32.7838, lng:  -79.9373}
+                    }
+
+                    let map = new google.maps.Map(document.getElementById('map'), options);
+                   /* const geocoder = new google.maps.Geocoder();
+                    
+                    let honorsCollge = geocoder.geocode({ address: '10 Green Way, Charleston, SC 29424' }, function(results, status) {
+                        if (status === 'OK') {
+                          // Get the latitude and longitude of the address
+                          const latitude = results[0].geometry.location.lat();
+                           const longitude = results[0].geometry.location.lng();
+                    
+                          // Create a marker at the address
+                         const marker = new google.maps.Marker({
+                            position: { lat: latitude, lng: longitude },
+                            map: map,
+                            visible: false
+                          });
+
+                          if ($('#list4').hover() === 'true') {
+                            marker.setVisible(true);
+                          }
+                         
+                        /*  $('#list4').hover(function(){
+                            console.log("honors hover");
+                            marker.setVisible(true);
+                          }, function(){
+                            marker.setVisible(false);
+                          });
+                          
+                        
+                        } else {
+                          console.error('Geocode was not successful: ' + status);
+                        }
+                      });
+                        */
+
+                
+                    const cistern = new google.maps.Marker({
+                        position: {lat: 32.7838, lng:  -79.9373},
+                        map: map 
+                      });
+                      const library = new google.maps.Marker({
+                        position: {lat: 32.7842, lng:  -79.9398},
+                        map: map 
+                      });
+
+                      const honorsCollege = new google.maps.Marker({
+                        position: {lat: 32.7842, lng:  -79.9378},
+                        map: map 
+                      });
+                      const studentAffairs = new google.maps.Marker({
+                        position: {lat: 32.782660, lng:  -79.937880},
+                        map: map 
+                      });
+
+                      const athleticDepartment = new google.maps.Marker({
+                        position: {lat: 32.785549, lng:  -79.933693},
+                        map: map 
+                      });
+
+                      const universityComm = new google.maps.Marker({
+                        position: {lat: 32.783890, lng:  -79.937930},
+                        map: map 
+                      });
+
+                      const schoolArts = new google.maps.Marker({
+                        position: {lat: 	32.78375, lng: -79.93674},
+                        map: map 
+                      });
+
+                      const schoolEdu = new google.maps.Marker({
+                        position: {lat: 	32.78198, lng: -79.9352},
+                        map: map 
+                      });
+
+                      const schoolMathSci = new google.maps.Marker({
+                        position: {lat: 	32.78452220964711	, lng: -79.93984115328198},
+                        map: map 
+                      });
+
+                      const schoolHuman = new google.maps.Marker({
+                        position: {lat: 32.7844228, lng: -79.9372994},
+                        map: map 
+                      });
+
+                      const instAdvance = new google.maps.Marker({
+                        position: {lat: 32.78471, lng: -79.93837},
+                        map: map 
+                      });
+                      const facManage = new google.maps.Marker({
+                        position: {lat: 32.786466375, lng: -79.93456525},
+                        map: map 
+                      });
+
+                      const schoolBusiness = new google.maps.Marker({
+                        position: {lat: 32.78288353468194, lng: -79.93523893063612	},
+                        map: map 
+                      });
+                      
+                      
+
+
+                      
+
+
+
+                      cistern.setVisible(false);
+                      library.setVisible(false);
+                      honorsCollege.setVisible(false);
+                      studentAffairs.setVisible(false);
+                      athleticDepartment.setVisible(false);
+                      universityComm.setVisible(false);
+                      schoolArts.setVisible(false);
+                      schoolEdu.setVisible(false);
+                      schoolMathSci.setVisible(false);
+                      schoolHuman.setVisible(false);
+                      instAdvance.setVisible(false);
+                      facManage.setVisible(false);
+                      schoolBusiness.setVisible(false);
+                      
+
+                      $('#list5').hover(function(){
+                        console.log("cistern visible");
+                        cistern.setVisible(true);
+                      }, function(){
+                        cistern.setVisible(false);
+                      });
+
+                      $('#list6').hover(function(){
+                        console.log("library visible");
+                        library.setVisible(true);
+                      }, function(){
+                        library.setVisible(false);
+                      });
+
+                      $('#list4').hover(function(){
+                        console.log("honors hover");
+                        honorsCollege.setVisible(true);
+                      }, function(){
+                        honorsCollege.setVisible(false);
+                      });
+
+                      $('#list1').hover(function(){
+                        console.log("student affairs hover");
+                        studentAffairs.setVisible(true);
+                      }, function(){
+                        studentAffairs.setVisible(false);
+                      });
+
+                      $('#list3').hover(function(){
+                        console.log("athletic department hover");
+                        athleticDepartment.setVisible(true);
+                      }, function(){
+                        athleticDepartment.setVisible(false);
+                      });
+
+                      $('#list7').hover(function(){
+                        console.log("university communications department hover");
+                        universityComm.setVisible(true);
+                      }, function(){
+                        universityComm.setVisible(false);
+                      });
+                      $('#list8').hover(function(){
+                        console.log("school of the arts department hover");
+                        schoolArts.setVisible(true);
+                      }, function(){
+                        schoolArts.setVisible(false);
+                      });
+
+                      $('#list9').hover(function(){
+                        console.log("school of education department hover");
+                        schoolEdu.setVisible(true);
+                      }, function(){
+                        schoolEdu.setVisible(false);
+                      });
+
+                      $('#list10').hover(function(){
+                        console.log("school of math of science department hover");
+                        schoolMathSci.setVisible(true);
+                      }, function(){
+                        schoolMathSci.setVisible(false);
+                      });
+                      $('#list11').hover(function(){
+                        console.log("school of humanities department hover");
+                        schoolHuman.setVisible(true);
+                      }, function(){
+                        schoolHuman.setVisible(false);
+                      });
+
+                      $('#list12').hover(function(){
+                        console.log("institutional advancement department hover");
+                        instAdvance.setVisible(true);
+                      }, function(){
+                        instAdvance.setVisible(false);
+                      });
+
+                      $('#list13').hover(function(){
+                        console.log("facility department hover");
+                        facManage.setVisible(true);
+                      }, function(){
+                        facManage.setVisible(false);
+                      });
+
+                      $('#list2').hover(function(){
+                        console.log("business department hover");
+                        schoolBusiness.setVisible(true);
+                      }, function(){
+                        schoolBusiness.setVisible(false);
+                      });
+
+
+
+
+
+
+                  
+
+
+                }
+
+        </script>
+
+        <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDH9MInOfVhAKmkcYI0UKrHKHEVML3K3l8&callback=initMap"></script>
+    </body>
+
+    
+
+
+</html>
+
+<style>
+
+   
+    header{
+
+      
+       
+        width:  100%;
+        height: 5em;
+        background: #660000;
+        background-size: 100%;
+        float: top;
+        border-bottom-left-radius: 12px;
+        border-bottom-right-radius: 12px;
+    }
+
+    footer{
+   
+       
+        width:  100%;
+        height: 5em;
+        background: #660000;
+        background-size: 100%;
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        border-top-left-radius: 12px;
+        border-top-right-radius: 12px;
+       
+        
+    }
+    nav {
+      
+        text-align: center;
+        float: center;
+        margin-bottom: 50px;
+        
+        
+        
+    }
+    
+    
+    ul li {
+        list-style-type: none;
+        text-align: center;
+       
+    }
+    
+    ul {
+        display: grid;
+        grid-template-columns: auto auto;
+        float: center;
+        border-radius: 12px;
+        text-align: center;
+        color: white;
+        font-weight: bold; 
+        
+       
+        
+    }
+    a{
+      margin-right: -60px;
+    }
+    
+    li {
+          background-color: #660000;
+        border-radius: 12px;
+       float: center;
+        width: 75%;
+       text-align: center;
+        padding: 10px;
+        margin: 10px;
+        color: white;
+        font-weight: bold; 
+
+    
+    }
+    
+    nav a {
+        text-decoration: none;
+    }
+
+    .map{
+        height: 400px;
+        width: 100%;
+        float: left;
+        margin-right: 30px;
+    }
+
+ 
+    .row{
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+    }
+
+    @media only screen and (max-width: 1100px) {
+      nav{
+        margin-bottom: 10px;
+      }
+      ul{
+        display: grid;
+        margin-bottom: 10px;
+        grid-template-columns: 1fr 1fr;
+      }
+
+      li{
+        width: 225px;
+       
+      }
+      a{
+        margin: auto;
+      }
+      
+    }
+
+    @media screen and (max-width:  768px) {
+      .container{
+       max-width: 700px;
+
+      }
+      #departmentContainer{
+        width: 200px;
+      }
+      .row{
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+      }
+      .col{
+        display: flex;
+      }
+
+      ul{
+        display: grid;
+         grid-template-columns: 1fr 1fr 1fr;
+         margin-left: 0;
+      }
+      li{
+        padding: auto;
+      }
+      
+    }
+
+
+
+</style>
